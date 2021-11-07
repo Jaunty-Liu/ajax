@@ -6,6 +6,10 @@ const path = require('path');
 const app = express();
 // 静态资源访问服务功能
 app.use(express.static(path.join(__dirname, 'public')));
+//json形式
+app.post('/json', (req, res) => {
+	res.send(req.body);
+});
 // 监听端口
 app.listen(3000);
 // 控制台提示输出

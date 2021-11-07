@@ -8,6 +8,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 //返回错误信息
 app.get('/error', (req, res) => {
+	// console.log(abc);//输出一个不存在的变量会报500
 	res.status(400).send('not ok');
 });
 // 监听端口

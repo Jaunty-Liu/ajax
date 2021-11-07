@@ -6,20 +6,26 @@
 </head>
 <body>
 	<script type="text/javascript">
-		// 1.创建ajax对象
 		var xhr = new XMLHttpRequest();
-		// 2.告诉Ajax对象要向哪发送请求，以什么方式发送请求
-		// 1)请求方式 2)请求地址
-		xhr.open('post', 'http://127.0.0.1:3000/json');
-		// 通过请求头告诉服务器端客户端向服务器端传递的请求参数的格式是什么
-		xhr.setRequestHeader('Content-Type', 'application/json');
-		// JSON.stringify() 将json对象转换为json字符串
-		// 3.发送请求
-		xhr.send(JSON.stringify({name: 'lisi', age:50}));
-		// 4.获取服务器端响应到客户端的数据
-		xhr.onload = function (){
-			console.log(xhr.responseText)
-		}
+		// 0 已经创建了ajax对象 但是还没有对ajax对象进行配置
+		console.log(xhr.readyState);//0
+		xhr.open('get', 'http://127.0.0.1:3000/readystate');
+		// 1 已经对ajax对象进行配置 但是还没有发送请求
+		console.log(xhr.readyState);//1
+		// 当ajax状态码发生变化的时候出发
+		xhr.onreadystatechange = function() {
+			// 2 请求已经发送了
+			// 3 已经接收到服务器端的部分数据了
+			// 4 服务器端的响应数据已经接收完成
+			console.log(xhr.readyState);//2//3//4
+			// 对ajax状态码进行判断 如果状态码的值为4就代表数据已经接收完成了
+			if (xhr.readyState == 4) {
+				console.log(xhr.responseText);
+			}
+		} 
+
+		xhr.send();
+		
 	</script>
 </body>
 </html>

@@ -6,9 +6,9 @@ const path = require('path');
 const app = express();
 // 静态资源访问服务功能
 app.use(express.static(path.join(__dirname, 'public')));
-//onreadystatechange
-app.get('/readystate', (req, res) => {
-	res.send('hello');
+//返回错误信息
+app.get('/error', (req, res) => {
+	res.status(400).send('not ok');
 });
 // 监听端口
 app.listen(3000);

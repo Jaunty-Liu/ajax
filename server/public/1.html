@@ -5,27 +5,35 @@
 	<title>Document</title>
 </head>
 <body>
+	<button id="btn">发送Ajax请求</button>
 	<script type="text/javascript">
-		var xhr = new XMLHttpRequest();
-		// 0 已经创建了ajax对象 但是还没有对ajax对象进行配置
-		console.log(xhr.readyState);//0
-		xhr.open('get', 'http://127.0.0.1:3000/readystate');
-		// 1 已经对ajax对象进行配置 但是还没有发送请求
-		console.log(xhr.readyState);//1
-		// 当ajax状态码发生变化的时候出发
-		xhr.onreadystatechange = function() {
-			// 2 请求已经发送了
-			// 3 已经接收到服务器端的部分数据了
-			// 4 服务器端的响应数据已经接收完成
-			console.log(xhr.readyState);//2//3//4
-			// 对ajax状态码进行判断 如果状态码的值为4就代表数据已经接收完成了
-			if (xhr.readyState == 4) {
-				console.log(xhr.responseText);
-			}
-		} 
+		var btn = document.getElementById('btn');
 
-		xhr.send();
-		
+		btn.onclick = function () {
+			// 1.创建ajax对象
+			var xhr = new XMLHttpRequest();
+			// 2.告诉Ajax对象要向哪发送请求，以什么方式发送请求
+			// 1)请求方式 2)请求地址
+			xhr.open('get', 'http://127.0.0.1/error');
+			// 3.发送请求
+			xhr.send();
+			// 4.获取服务器端响应到客户端的数据
+			xhr.onload = function (){
+				// xhr.status 获取http状态码
+				console.log(xhr.responseText);//not ok
+
+				if (xhr.status == 400) {
+					alert('请求出错')
+				}
+			}
+			// 当网络中断时会触发onerrr事件
+			xhr.onerror = function () {
+				alert('网络中断, 无法发送Ajax请求')
+			}
+		}
+
+		// Ajax状态码: 表示Ajax请求的过程状态 ajax对象返回的
+		// Http状态码: 表示请求的处理结果 是服务器端返回的
 	</script>
 </body>
 </html>

@@ -6,11 +6,6 @@ const path = require('path');
 const app = express();
 // 静态资源访问服务功能
 app.use(express.static(path.join(__dirname, 'public')));
-//返回错误信息
-app.get('/error', (req, res) => {
-	// console.log(abc);//输出一个不存在的变量会报500
-	res.status(400).send('not ok');
-});
 // 监听端口
 app.listen(3000);
 // 控制台提示输出

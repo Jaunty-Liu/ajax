@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
-</script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+<link rel="stylesheet" href="scroll/jquery.mCustomScrollbar.css" />
 <script>
 $(document).ready(function(){
   $("button").click(function(){
@@ -15,6 +16,13 @@ $(document).ready(function(){
     $("#runoob").html(title);
   });
 });
+(function($){
+        $(window).on("load",function(){
+            $(".scroll").mCustomScrollbar({
+              axis:"x"
+            });
+        });
+    })(jQuery);
 </script>
 </head>
 
@@ -22,5 +30,85 @@ $(document).ready(function(){
 <p><a href="//www.runoob.com" id="runoob">菜鸟教程</a></p>
 <button>修改 href 和 title</button>
 <p>点击按钮修改后，可以查看 href 和 title 是否变化。</p>
+<div class="scroll" data-mcs-theme="dark">
+  <div style="width: 1500px;background-color: blue;"></div>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
 </body>
+<style>
+  .scroll{
+    height: 500px;
+    width: 800px;
+    background-color: beige;
+  }
+</style>
 </html>
